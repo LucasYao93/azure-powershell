@@ -4961,6 +4961,7 @@ Creates a new MySQL flexible server
 .Description
 Creates a new server.
 .Example
+PS C:\> $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
 -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240
 
@@ -4968,6 +4969,7 @@ Name            Location AdministratorLogin Version StorageProfileStorageMb SkuN
 ----            -------- ------------------ ------- ----------------------- ------------    -------------        
 mysql-test      West US 2   mysqltest    5.7      10240                  Standard_B1ms   Burstable
 .Example
+PS C:\> $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
 -AdministratorUserName mysqltest -AdministratorLoginPassword $password
 
@@ -5874,6 +5876,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]
     # Enable ssl enforcement or not when connect to server.
     ${SslEnforcement},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum]
+    # Set the minimal TLS version for connections to server when SSL is enabled.
+    # Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.
+    ${MinimalTlsVersion},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -7717,6 +7727,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]
     # Enable ssl enforcement or not when connect to server.
     ${SslEnforcement},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum]
+    # Set the minimal TLS version for connections to server when SSL is enabled.
+    # Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.
+    ${MinimalTlsVersion},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]

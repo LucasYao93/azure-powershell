@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter MinimalTlsVersion for the New-AzMySqlServer and  Update-AzMySqlServer. 
 
 ## Version 0.3.1
 * Fixed secure string issue
